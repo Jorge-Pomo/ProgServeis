@@ -91,7 +91,7 @@ public class App {
 		System.out.println("La suma de los numeros es = " + resu);
 	}
 
-	// Act 7
+	// Act 7 - Salario desarrollador
 	// parametres d'entrada: null
 	// parametres d'iida: null
 	public static void nivelSalario() {
@@ -123,7 +123,7 @@ public class App {
 		}
 	}
 
-	// Act8
+	// Act8 - Intervalo
 	// parametres d'entrada: null
 	// parametres d'ixida: null
 	public static void intervalo() {
