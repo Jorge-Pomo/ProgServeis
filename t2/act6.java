@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class act2 {
+public class act6 {
 
 	public void lanzarSumador(Integer n1, Integer n2) {
 
@@ -35,7 +35,7 @@ public class act2 {
 			System.out.println("Comando a ejecutar en cmd.exe: " + command.toString().replace(",", ""));
 
 			ProcessBuilder builder = new ProcessBuilder(command);
-			Process process = builder.start();
+			Process process = builder.inheritIO().start();
 			// Process process = builder.start();
 			process.waitFor();
 			System.out.println(process.exitValue());
@@ -46,7 +46,7 @@ public class act2 {
 	}
 
 	public static void main(String[] args) {
-		act2 l = new act2();
+		act6 l = new act6();
 		l.lanzarSumador(1, 100);
 		System.out.println("Ok");
 

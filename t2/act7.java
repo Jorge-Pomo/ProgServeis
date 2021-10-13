@@ -4,9 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class act2 {
+public class act7 {
 
-	public void lanzarSumador(Integer n1, Integer n2) {
+	public void lanzarSumador(Integer n1, Integer n2, String n3) {
 
 		// Nom de la clase a la que volem cridar
 		String clase = "t2.act1";
@@ -30,11 +30,15 @@ public class act2 {
 			// Enviem arguments a la clase "className"
 			command.add(n1.toString());
 			command.add(n2.toString());
+			command.add(n3.toString());
 
 			System.out.println("Comando que se pasa a ProcessBuilder: " + command);
 			System.out.println("Comando a ejecutar en cmd.exe: " + command.toString().replace(",", ""));
 
 			ProcessBuilder builder = new ProcessBuilder(command);
+			
+			builder.redirectOutput(new File(n3));
+			
 			Process process = builder.start();
 			// Process process = builder.start();
 			process.waitFor();
@@ -46,8 +50,8 @@ public class act2 {
 	}
 
 	public static void main(String[] args) {
-		act2 l = new act2();
-		l.lanzarSumador(1, 100);
+		act7 l = new act7();
+		l.lanzarSumador(1, 100, ".\\src\\t2\\fitxers\\resuAct7.txt");
 		System.out.println("Ok");
 
 	}

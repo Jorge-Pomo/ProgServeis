@@ -38,15 +38,20 @@ public class act4 {
 			System.out.println("Comando a ejecutar en cmd.exe: " + command.toString().replace(",", ""));
 
 			ProcessBuilder builder = new ProcessBuilder(command);
-			Process process = builder.inheritIO().start();
+			Process process = builder.start();
 			// Process process = builder.start();
 			process.waitFor();
 			System.out.println(process.exitValue());
-			
+
+			// Llegir arxiu
 			BufferedReader br = new BufferedReader(new FileReader(n3));
-			br.read();
+			String linea;
+
+			while ((linea = br.readLine()) != null) {
+				System.out.println(linea);
+			}
+
 			br.close();
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
