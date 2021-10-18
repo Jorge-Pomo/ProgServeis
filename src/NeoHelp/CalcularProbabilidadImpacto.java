@@ -3,6 +3,7 @@ package NeoHelp;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class CalcularProbabilidadImpacto {
 
@@ -23,6 +24,14 @@ public class CalcularProbabilidadImpacto {
 		
 		// Escribir en txt
 		guardarProbabilidad(resultado, nombreNEO);
+		
+		double formatResu = (double)Math.round(resultado * 100d) / 100d;
+		
+		if(formatResu >= 10) {
+			System.err.println("¡Alerta mundial! Alta probabilidad de impacto por un asteroide!!!");
+		}else {
+			System.out.println("Solo hay " + formatResu + "% de probabilidad de un impacto, no hay que preocuparse");
+		}
 	}
 	
 	// Guardar resultat
