@@ -2,17 +2,17 @@ package APP;
 
 public class Minero implements Runnable{
 
-	private int bolsa;
+	public int bolsa;
 	private int tiempoExtraccion;
 	private Mina m;
 	
 	public Minero(Mina mina) {
 		this.bolsa = 0;
-		this.tiempoExtraccion = 1000;
+		this.tiempoExtraccion = 100;
 		this.m = mina;
 	}
 	
-	public void extraerRecurso(Mina m) {
+	synchronized public void extraerRecurso(Mina m) {
 		m.stock--;
 		try {
 			Thread.sleep(tiempoExtraccion);
