@@ -1,32 +1,38 @@
 package t3;
 
-public class Caracol implements Runnable {
+public class Caracol2 implements Runnable {
 
 	private double velocidad;
 	private String nombre;
 	
-	public Caracol() {
+	public Caracol2() {
 		
 	}
 	
-	public Caracol(double velocidad, String nombre) {
+	public Caracol2(double velocidad, String nombre) {
 		this.velocidad = velocidad;
 		this.nombre = nombre;
 		
 	}
 	
 	public static void main(String[] args) {
-		Caracol caracol1 = new Caracol((Math.random() * (1 - 0.1)) + 0.1, "Caracol 1");
-		Caracol caracol2 = new Caracol((Math.random() * (1 - 0.1)) + 0.1, "Caracol 2");
-		Caracol caracol3 = new Caracol((Math.random() * (1 - 0.1)) + 0.1, "Caracol 3");
-		Caracol caracol4 = new Caracol((Math.random() * (1 - 0.1)) + 0.1, "Caracol 4");
-		Caracol caracol5 = new Caracol((Math.random() * (1 - 0.1)) + 0.1, "Caracol 5");
+		Caracol caracol1 = new Caracol(0.02, "Caracol 1");
+		Caracol caracol2 = new Caracol(0.02, "Caracol 2");
+		Caracol caracol3 = new Caracol(0.02, "Caracol 3");
+		Caracol caracol4 = new Caracol(0.02, "Caracol 4");
+		Caracol caracol5 = new Caracol(0.02, "Caracol 5");
 		
 		Thread hilo1 = new Thread(caracol1);
 		Thread hilo2 = new Thread(caracol2);
 		Thread hilo3 = new Thread(caracol3);
 		Thread hilo4 = new Thread(caracol4);
 		Thread hilo5 = new Thread(caracol5);
+		
+		hilo1.setPriority(1);
+		hilo1.setPriority(3);
+		hilo1.setPriority(5);
+		hilo1.setPriority(7);
+		hilo1.setPriority(9);
 		
 		hilo1.start();
 		hilo2.start();
