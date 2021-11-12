@@ -1,5 +1,7 @@
 package t3;
 
+//Act 4 - Carrera Carqacol 1.2
+
 public class Caracol2 implements Runnable {
 
 	private double velocidad;
@@ -29,10 +31,10 @@ public class Caracol2 implements Runnable {
 		Thread hilo5 = new Thread(caracol5);
 		
 		hilo1.setPriority(1);
-		hilo1.setPriority(3);
-		hilo1.setPriority(5);
-		hilo1.setPriority(7);
-		hilo1.setPriority(9);
+		hilo2.setPriority(3);
+		hilo3.setPriority(5);
+		hilo4.setPriority(7);
+		hilo5.setPriority(9);
 		
 		hilo1.start();
 		hilo2.start();
@@ -46,10 +48,11 @@ public class Caracol2 implements Runnable {
 	public void run() {
 		int cm = 100;
 		double cont = this.velocidad;
-		int distancia = 0;
+		String distancia = "";
 		
 		while(cont < cm) {
-			System.out.println("El caracol " + this.nombre + " ha recorrido ja un " + String.format("%.2f", cont) + "%");
+			distancia = String.format("%.2f", cont);
+			System.out.println("El caracol " + this.nombre + " ha recorrido ja un " + distancia + "%");
 			cont += cont;
 		}
 		

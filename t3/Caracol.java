@@ -1,5 +1,7 @@
 package t3;
 
+//Act 3 - Carrera caracol
+
 public class Caracol implements Runnable {
 
 	private double velocidad;

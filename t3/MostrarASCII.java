@@ -1,5 +1,7 @@
 package t3;
 
+//Act 1 - Mostrar ACII
+
 public class MostrarASCII implements Runnable {
 
 	private int tipo;
