@@ -3,16 +3,18 @@ package t3.Semaforos;
 public class ControlSemaforos implements Runnable {
 
 	// Atributs
-	
+	public int estado;
 	public int semaforo;
 
+	//Main m = new Main(); 
+	
 	// Constructors
 	public ControlSemaforos() {
 
 	}
 
-	public ControlSemaforos(boolean estado, int semaforo) {
-		Main.estado = estado;
+	public ControlSemaforos(int estado, int semaforo) {
+		this.estado = estado;
 		this.semaforo = semaforo;
 	}
 
@@ -21,14 +23,16 @@ public class ControlSemaforos implements Runnable {
 	public void encenderSemaforo1() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				while (estado == false)
+				while (estado == 1) {
+					System.out.println("Semaforo 1 En espera");
 					wait();
-				
+				}
+
 				System.out.println("El semaforo 1 esta en verde");
-				Thread.sleep(3000);
-				
-				estado = false;
-				
+				Thread.sleep(300);
+
+				estado = 1;
+
 				notify();
 			}
 		}
@@ -38,11 +42,14 @@ public class ControlSemaforos implements Runnable {
 	public void encenderSemaforo2() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				while (estado == true) wait();
-				
+				while (estado == 0) {
+					System.err.println("Semaforo 2 En espera");
+					wait();
+				}
+
 				System.err.println("El semaforo 2 esta en verde");
-				Thread.sleep(3000);
-				estado = true;
+				Thread.sleep(300);
+				estado = 0;
 				notify();
 			}
 		}
@@ -51,7 +58,7 @@ public class ControlSemaforos implements Runnable {
 	// Runnable
 	@Override
 	public void run() {
-		if (estado) {
+		if (semaforo == 1) {
 			try {
 				encenderSemaforo1();
 			} catch (InterruptedException e) {
