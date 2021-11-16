@@ -8,7 +8,7 @@ public class Minero implements Runnable{
 	
 	public Minero(Mina mina) {
 		this.bolsa = 0;
-		this.tiempoExtraccion = 100;
+		this.tiempoExtraccion = 1000;
 		this.m = mina;
 	}
 	
