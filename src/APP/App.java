@@ -35,7 +35,7 @@ public class App {
 			System.err.println(mineros.get(i).bolsa);
 		}
 		
-		System.out.println("La cantidad total de oro es: " + cantidadTotal);
+		System.err.println("La cantidad total de oro es: " + cantidadTotal);
 		
 	}
 
