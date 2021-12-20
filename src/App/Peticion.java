@@ -14,13 +14,19 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
 public class Peticion implements Runnable {
+	// Atributs
 	Socket socket;
 	BufferedReader bfr;
-
+	
+	// Constructor
 	public Peticion(Socket socket) {
 		this.socket = socket;
 	}
 
+	// encriptar(String)
+	// Parametres d'entrada: String amb la Contraseña
+	// PAramentres d'eixida: String amb a contraseña encriptada
+	// El metodo encripta una contraseña sumant-li al caracter en ASCII un número mes
 	public String encriptar(String contra) {
 		String resu = "";
 //		if (opc.equals("1")) {
@@ -53,6 +59,8 @@ public class Peticion implements Runnable {
 		return resu;
 	}
 
+	// run()
+	// Fil que es comunicara en el client
 	public void run() {
 		try {
 			InputStream is = socket.getInputStream();

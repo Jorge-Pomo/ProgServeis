@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Cliente {
 
+	// Main
+	// Arranca el client i es cominica en el Servidor
 	public static void main(String[] arg) throws UnknownHostException, IOException, ClassNotFoundException {
 		Scanner sc = new Scanner(System.in);
 		

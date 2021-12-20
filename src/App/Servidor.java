@@ -8,6 +8,8 @@ import java.net.Socket;
 
 public class Servidor {
 
+	// Main
+	// Arranca el  servidor y crea una petició a partir de un fil
 	public static void main(String[] args) throws IOException {
 		System.err.println("SERVIDOR >>> Arranca el servidor, espera peticion");
 		ServerSocket socketEscucha = null;
