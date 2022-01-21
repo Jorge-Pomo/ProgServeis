@@ -17,7 +17,7 @@ public class GestorHTTP implements HttpHandler {
 		String requestParamValue = null;
 		if ("GET".equals(httpExchange.getRequestMethod())) {
 			requestParamValue = handleGetRequest(httpExchange);
-			handleGETResponse(httpExchange, requestParamValue);
+			handleGETResponse(httpExchange, requestParamValue);			
 		} else if ("POST".equals(httpExchange.getRequestMethod())) {
 			requestParamValue = handlePostRequest(httpExchange);
 			handlePOSTResponse(httpExchange, requestParamValue);
@@ -30,7 +30,9 @@ public class GestorHTTP implements HttpHandler {
 	
 	private void handleGETResponse(HttpExchange httpExchange, String requestParamValue) {
 		OutputStream outputStream = httpExchange.getResponseBody();
-		String htmlResponse = "<html><body>Hola"+requestParamValue+"</body></html>";
+		//String htmlResponse = "<html><body>Hola "+requestParamValue+"</body></html>";
+		String htmlResponse = paguinasWeb(requestParamValue);
+		leerPeticionGet(requestParamValue);
 		try {
 			httpExchange.sendResponseHeaders(200, htmlResponse.length());
 			outputStream.write(htmlResponse.getBytes());
@@ -41,23 +43,28 @@ public class GestorHTTP implements HttpHandler {
 		}
 	}
 	
-	private String handlePostRequest(HttpExchange httpExchange) {
+	private String handlePostRequest(HttpExchange httpExchange) throws IOException {
 		InputStream inputStream = httpExchange.getRequestBody();
 		/* Procesar lo que hay en inputStream, por ejemplo linea a linea y guardarlo todo
 		en un string, que sera el que devuelve el metodo
 		*/
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-		StringBuilder out = new StringBuilder();
+		//StringBuilder out = new StringBuilder();
 		String postRequest = "";
 		
 		try {
-			while ((postRequest = br.readLine()) != null) {
+			while (true) {
 				postRequest += br.readLine();
+				if(br.readLine() != null) {
+					break;
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		contenidoPost(postRequest);
 		
 		return postRequest;
 	}
@@ -73,6 +80,28 @@ public class GestorHTTP implements HttpHandler {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	// ACTS
+	// Act 6
+	public static void leerPeticionGet(String respuesta) {
+		System.out.println(respuesta); 
+	}
+	
+	// Act 7
+	public static String paguinasWeb(String peticion) {
+		String respuesta = "";
+		if(peticion.length() > 10) {
+			respuesta = "<html><body><h1>Pag Web 1</h1> <p>La longitud de la peticion es mayor de 10</p></body></html>";
+		}else {
+			respuesta = "<html><body><h2>Pag Eb 2</h2> <p>La longitud de la peticion es menor o igual a 10</p></body></html>";
+		}
+		return respuesta;
+	}
+	
+	// Act 9
+	public static void contenidoPost(String respuesta) {
+		System.out.println(respuesta);
 	}
 	
 }
